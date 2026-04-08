@@ -99,7 +99,8 @@ function render() {
     renderQuestion('certifications', '🏅 Certificeringen', 'Hoeveel relevante low-code / platform-certificeringen heeft u?',
       Object.entries(SALARY_DATA.adjustments.certifications).map(([k, v]) => ({
         id: k, label: v.label, desc: null, icon: { none: '⬜', one: '🟦', two: '🟩', three: '🟨', four_plus: '🟧' }[k],
-      }))
+      })),
+      'Een certificaat is een officieel bewijs van vakbekwaamheid, uitgegeven door een platformleverancier of erkende trainingsinstantie (bijv. Mendix Rapid Developer, Advanced of Expert; OutSystems Associate of Professional; ServiceNow CSA). Het toont aan dat u een gestandaardiseerde toets of praktijkbeoordeling met goed gevolg heeft afgerond.'
     );
   } else if (state.step === 4) {
     renderQuestion('platform_depth', '🔧 Platform expertise', 'Hoe omschrijft u uw diepgang op het gebruikte low-code platform?',
@@ -243,7 +244,7 @@ function renderRoleSelect() {
 }
 
 // ── Generic question screen ────────────────────────────────────────────────────
-function renderQuestion(key, title, subtitle, options) {
+function renderQuestion(key, title, subtitle, options, context) {
   let optHTML = '';
   for (const opt of options) {
     const sel = state[key] === opt.id ? 'selected' : '';
@@ -267,6 +268,7 @@ function renderQuestion(key, title, subtitle, options) {
       <div class="card">
         <div class="question-title">${title}</div>
         <div class="question-subtitle">${subtitle}</div>
+        ${context ? `<div class="info-box">${context}</div>` : ''}
         <div class="radio-group">${optHTML}</div>
         <div class="btn-row">
           <button class="btn btn-outline" onclick="goBack()">← Terug</button>
