@@ -158,7 +158,7 @@ function renderWelcome() {
             <div class="feature-item">
               <div class="fi-icon">💰</div>
               <div>
-                <strong>Marktsalaris 2024–2025</strong><br/>
+                <strong>Marktsalaris 2023–2026</strong><br/>
                 Gebaseerd op CBS-data, salary surveys en branchebenchmarks.
               </div>
             </div>
@@ -196,7 +196,7 @@ function renderWelcome() {
         </div>
       </div>
       <div class="app-footer">
-        Indicatief · Gebaseerd op openbare bronnen en marktdata 2024–2025 ·
+        Indicatief · Gebaseerd op openbare bronnen en marktdata 2023–2026 ·
         Bedragen zijn bruto jaarsalaris excl. 8% vakantiegeld
       </div>
     </div>
@@ -463,7 +463,7 @@ function renderResult() {
 
       </div>
       <div class="app-footer">
-        Indicatief · Marktdata 2024–2025 · Bruto jaarsalaris excl. vakantiegeld ·
+        Indicatief · Marktdata 2023–2026 · Bruto jaarsalaris excl. vakantiegeld ·
         Geen rechten te ontlenen aan deze indicatie
       </div>
     </div>
@@ -542,7 +542,7 @@ function renderOverview() {
           </div>
           <div>
             <div class="logo-name">Salarishuis – Overzicht alle rollen</div>
-            <div class="logo-sub">Low Code Enterprise Solutions · Nederland · 2024–2025</div>
+            <div class="logo-sub">Low Code Enterprise Solutions · Nederland · 2023–2026</div>
           </div>
         </div>
 
@@ -571,7 +571,7 @@ function renderOverview() {
         </div>
       </div>
       <div class="app-footer">
-        Indicatief · Marktdata 2024–2025 · Bruto jaarsalaris excl. vakantiegeld
+        Indicatief · Marktdata 2023–2026 · Bruto jaarsalaris excl. vakantiegeld
       </div>
     </div>
   `;
