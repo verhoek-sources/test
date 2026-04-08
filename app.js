@@ -16,6 +16,13 @@ const state = {
 
 const TOTAL_STEPS = 6; // welcome + 4 questions + result
 
+// ── Platform expertise descriptions ──────────────────────────────────────────
+const PLATFORM_DEPTH_DESCS = {
+  general:    'Werkervaring met low-code platforms op functioneel niveau. U kunt basistaken uitvoeren maar bent geen specialist in één specifiek platform.',
+  specialist: 'Diepgaande kennis van één of meerdere low-code platforms (bijv. Mendix, OutSystems of ServiceNow). U bouwt zelfstandig complexe applicaties en configuraties.',
+  expert:     'Officieel gecertificeerd door de platformleverancier (bijv. Mendix Advanced of Expert Certification). U geldt als interne kennisdrager en wordt ingezet bij pre-sales en kennisoverdracht.',
+};
+
 // ── Helpers ──────────────────────────────────────────────────────────────────
 function fmt(n) {
   return '€\u202F' + n.toLocaleString('nl-NL');
@@ -78,7 +85,7 @@ function render() {
   } else if (state.step === 4) {
     renderQuestion('platform_depth', '🔧 Platform expertise', 'Hoe omschrijft u uw diepgang op het gebruikte low-code platform?',
       Object.entries(SALARY_DATA.adjustments.platform_depth).map(([k, v]) => ({
-        id: k, label: v.label, desc: null, icon: { general: '🌐', specialist: '⚙️', expert: '🏆' }[k],
+        id: k, label: v.label, desc: PLATFORM_DEPTH_DESCS[k], icon: { general: '🌐', specialist: '⚙️', expert: '🏆' }[k],
       }))
     );
   } else if (state.step === 5) {
@@ -225,7 +232,10 @@ function renderQuestion(key, title, subtitle, options) {
       <div class="radio-option ${sel}" onclick="selectOption('${key}','${opt.id}')">
         <div class="radio-dot"></div>
         <span style="font-size:1.2rem;flex-shrink:0;">${opt.icon || ''}</span>
-        <span>${opt.label}</span>
+        <span>
+          <span style="display:block;font-weight:600;">${opt.label}</span>
+          ${opt.desc ? `<span style="display:block;font-size:.78rem;color:var(--muted);margin-top:2px;line-height:1.4;">${opt.desc}</span>` : ''}
+        </span>
       </div>
     `;
   }
