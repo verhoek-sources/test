@@ -595,6 +595,12 @@ input[type="range"]::-moz-range-thumb {
   color: var(--primary);
 }
 
+.bvc-monthly {
+  font-size: .78rem;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
 .bvc-amount.mid { color: var(--accent); }
 
 /* Context section */
