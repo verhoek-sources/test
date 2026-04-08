@@ -17,6 +17,13 @@ const state = {
 
 const TOTAL_STEPS = 6; // welcome + 4 questions + result
 
+// ── Performance profile descriptions ─────────────────────────────────────────
+const PERFORMANCE_DESCS = {
+  developing: 'U bent nog in ontwikkeling richting de volledige functieverwachtingen. Dit is gebruikelijk bij starters of medewerkers die recent van rol zijn gewisseld. Uw salaris ligt doorgaans in het lagere deel van de band.',
+  meets:      'U voldoet consistent aan alle gestelde functieverwachtingen. Dit is het standaard referentiepunt voor een goed functionerende medewerker in deze rol en correspondeert met het midden van de salarisband.',
+  exceeds:    'U overtreft structureel de functieverwachtingen: u neemt initiatief, levert extra impact en wordt herkend als een sterke bijdrager. Dit rechtvaardigt een positie in het hogere deel van de salarisband.',
+};
+
 // ── Platform expertise descriptions ──────────────────────────────────────────
 const PLATFORM_DEPTH_DESCS = {
   general:    'Werkervaring met low-code platforms op functioneel niveau. U kunt basistaken uitvoeren maar bent geen specialist in één specifiek platform.',
@@ -111,7 +118,7 @@ function render() {
   } else if (state.step === 5) {
     renderQuestion('performance', '📊 Prestatieprofiel', 'Hoe presteert u ten opzichte van de functieverwachtingen?',
       Object.entries(SALARY_DATA.adjustments.performance).map(([k, v]) => ({
-        id: k, label: v.label, desc: null,
+        id: k, label: v.label, desc: PERFORMANCE_DESCS[k],
         icon: { developing: '📈', meets: '✅', exceeds: '🌟' }[k],
       }))
     );
