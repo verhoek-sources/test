@@ -299,7 +299,7 @@ function renderResult() {
         <div class="salary-main">
           <div class="sm-label">Uw indicatieve marktsalaris</div>
           <div class="sm-range">${fmt(mySalary)} / jaar</div>
-          <div class="sm-range" style="font-size:1.3rem;opacity:.9;margin-top:4px;">${fmtMonthly(mySalary)} / maand</div>
+          <div class="sm-range sm-monthly">${fmtMonthly(mySalary)} / maand</div>
           <div class="sm-sub">Bruto jaarsalaris excl. 8% vakantiegeld · ${role.track === 'support' ? 'Support' : role.track === 'architect' ? 'Architectuur' : 'Consulting'} track</div>
         </div>
 

@@ -522,6 +522,12 @@ input[type="range"]::-moz-range-thumb {
   opacity: .7;
 }
 
+.salary-main .sm-monthly {
+  font-size: 1.3rem;
+  opacity: .9;
+  margin-top: 4px;
+}
+
 /* Band visualization */
 .band-visual {
   margin: 24px 0;
