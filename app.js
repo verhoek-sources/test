@@ -161,7 +161,7 @@ function renderWelcome() {
             <div class="feature-item">
               <div class="fi-icon">💰</div>
               <div>
-                <strong>Market Salary 2024–2025</strong><br/>
+                <strong>Market Salary 2023–2026</strong><br/>
                 Based on CBS data, salary surveys and industry benchmarks.
               </div>
             </div>
@@ -199,7 +199,7 @@ function renderWelcome() {
         </div>
       </div>
       <div class="app-footer">
-        Indicative · Based on public sources and market data 2024–2025 ·
+        Indicative · Based on public sources and market data 2023–2026 ·
         Amounts are gross annual salary excl. 8% holiday allowance
       </div>
     </div>
@@ -466,7 +466,7 @@ function renderResult() {
 
       </div>
       <div class="app-footer">
-        Indicative · Market data 2024–2025 · Gross annual salary excl. holiday allowance ·
+        Indicative · Market data 2023–2026 · Gross annual salary excl. holiday allowance ·
         No rights can be derived from this indication
       </div>
     </div>
@@ -545,7 +545,7 @@ function renderOverview() {
           </div>
           <div>
             <div class="logo-name">Salary House – All Roles Overview</div>
-            <div class="logo-sub">Low Code Enterprise Solutions · Netherlands · 2024–2025</div>
+            <div class="logo-sub">Low Code Enterprise Solutions · Netherlands · 2023–2026</div>
           </div>
         </div>
 
@@ -574,7 +574,7 @@ function renderOverview() {
         </div>
       </div>
       <div class="app-footer">
-        Indicative · Market data 2024–2025 · Gross annual salary excl. holiday allowance
+        Indicative · Market data 2023–2026 · Gross annual salary excl. holiday allowance
       </div>
     </div>
   `;
