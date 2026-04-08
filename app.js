@@ -137,7 +137,7 @@ function renderWelcome() {
         </div>
 
         <div class="welcome-hero">
-          <div class="welcome-badge">🇳🇱 Marktsalaris 2024 – 2025</div>
+          <div class="welcome-badge">🇳🇱 Marktsalaris 2023 – 2026</div>
           <h1>Wat verdient u in de<br/>low-code markt?</h1>
           <p>
             Deze tool begeleidt u door een aantal vragen en berekent op basis van
