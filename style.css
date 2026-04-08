@@ -818,6 +818,22 @@ input[type="range"]::-moz-range-thumb {
   line-height: 1.6;
 }
 
+.btn-refresh {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background: var(--border);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  margin-top: 8px;
+  transition: all var(--transition);
+}
+
 /* ── Tooltip / info box ──────────────────────────────────── */
 .info-box {
   background: #EFF4FC;
