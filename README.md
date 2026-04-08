@@ -53,4 +53,12 @@ index.html   – Hoofdpagina (geen build-stap nodig)
 style.css    – Opmaak
 app.js       – Applicatielogica en navigatie
 data.js      – Salarisdata, rollen en aanpassingsfactoren
+version.js   – Centrale versierconstante voor cache-busting
 ```
+
+## Versie-beheer / cache-busting
+
+Statische assets (stylesheet, databestand en applicatielogica) worden altijd met een versie-querystring ingeladen (`?v=<APP_VERSION>`). Hierdoor laden browsers bij een nieuwe release automatisch de nieuwste bestanden in plaats van een gecachede versie.
+
+Om de cache te busten bij een nieuwe release: verhoog `APP_VERSION` in `version.js`.
+

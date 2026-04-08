@@ -4,13 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salarishuis – Low Code Enterprise Solutions</title>
-  <link rel="stylesheet" href="style.css" />
+  <script src="version.js"></script>
+  <script>
+    /* Inject the versioned stylesheet – cache is busted on every new release. */
+    (function () {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'style.css?v=' + APP_VERSION;
+      document.head.appendChild(link);
+    }());
+  </script>
 </head>
 <body>
   <div id="app">
     <!-- screens are injected by app.js -->
   </div>
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script>
+    /* Load data and app scripts with cache-busting version query strings.
+       async=false preserves the required execution order (data.js before app.js). */
+    (function () {
+      var v = '?v=' + APP_VERSION;
+      ['data.js', 'app.js'].forEach(function (src) {
+        var s = document.createElement('script');
+        s.src = src + v;
+        s.async = false;
+        document.body.appendChild(s);
+      });
+    }());
+  </script>
 </body>
 </html>
