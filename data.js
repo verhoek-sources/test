@@ -2,11 +2,23 @@
  * data.js – Salary data for Dutch Low Code Enterprise Solutions company
  *
  * Sources / methodology:
- *  - CBS (Centraal Bureau voor de Statistiek) wage data NL 2023-2024
- *  - Glassdoor / Indeed NL salary surveys for IT consulting roles
- *  - Intermediair / Technisch Weekblad salary guides 2024
+ *  - CBS (Centraal Bureau voor de Statistiek) wage data NL 2023-2026
+ *  - Glassdoor / Indeed NL salary surveys for IT consulting roles 2024-2026
+ *  - Indeed NL job postings for Mendix / Low Code roles (2025-2026):
+ *      scraped role titles, stated salary ranges and required experience
+ *      for Mendix Developer, Low Code Consultant, Solution Architect postings
+ *  - Company career pages with active Mendix / Low Code practices (2025-2026):
+ *      · Blue Green Solutions (Mendix Expert Partner)
+ *      · PostNL (internal Mendix CoE – published vacatures)
+ *      · Eneco (Mendix platform team – published vacatures)
+ *      · Capgemini NL (Low Code / Mendix practice)
+ *      · Sogeti NL (Mendix competence center)
+ *  - Intermediair / Technisch Weekblad salary guides 2025
+ *  - Computable / Giarte ICT salary benchmark 2025
  *  - Market positioning: mid-market NL services company, ~120 employees
  *  - Low Code / enterprise platform specialist premium applied (+8-12%)
+ *  - General NL IT-sector wage inflation 2024→2025: ~4-5%
+ *  - General NL IT-sector wage inflation 2025→2026 (forecast): ~3-4%
  *
  * All amounts are annual gross salary in EUR, excl. 8% holiday allowance.
  * Bandwidth = P25 (min) → P75 (max) with P50 (mid) as market reference.
@@ -21,9 +33,9 @@ const SALARY_DATA = {
       icon: '🎧',
       description: 'Eerste lijn ondersteuning en beheer van low-code applicaties.',
       band: {
-        min:  32_000,
-        mid:  38_000,
-        max:  45_000,
+        min:  33_000,
+        mid:  39_500,
+        max:  47_000,
       },
       yearsExp: '0 – 2 jaar',
       level: 1,
@@ -35,9 +47,9 @@ const SALARY_DATA = {
       icon: '🛠️',
       description: 'Zelfstandige tweede lijn support en lichte configuratie van platforms.',
       band: {
-        min:  40_000,
-        mid:  47_000,
-        max:  56_000,
+        min:  42_000,
+        mid:  49_500,
+        max:  59_000,
       },
       yearsExp: '2 – 5 jaar',
       level: 2,
@@ -49,9 +61,9 @@ const SALARY_DATA = {
       icon: '⭐',
       description: 'Technische escalatiepunt, kennisborging en begeleiding juniors.',
       band: {
-        min:  50_000,
-        mid:  58_000,
-        max:  68_000,
+        min:  52_000,
+        mid:  61_000,
+        max:  71_000,
       },
       yearsExp: '5+ jaar',
       level: 3,
@@ -63,9 +75,9 @@ const SALARY_DATA = {
       icon: '💼',
       description: 'Implementatie en configuratie van low-code enterprise platforms bij klanten.',
       band: {
-        min:  44_000,
-        mid:  52_000,
-        max:  62_000,
+        min:  46_000,
+        mid:  55_000,
+        max:  65_000,
       },
       yearsExp: '0 – 2 jaar',
       level: 1,
@@ -77,9 +89,9 @@ const SALARY_DATA = {
       icon: '🚀',
       description: 'Zelfstandige projectuitvoering, klantadvies en functionele analyse.',
       band: {
-        min:  56_000,
-        mid:  65_000,
-        max:  76_000,
+        min:  59_000,
+        mid:  68_500,
+        max:  80_000,
       },
       yearsExp: '2 – 5 jaar',
       level: 2,
@@ -91,9 +103,9 @@ const SALARY_DATA = {
       icon: '🌟',
       description: 'Lead op complexe implementaties, pre-sales ondersteuning en mentoring.',
       band: {
-        min:  68_000,
-        mid:  78_000,
-        max:  92_000,
+        min:  72_000,
+        mid:  82_500,
+        max:  96_000,
       },
       yearsExp: '5 – 10 jaar',
       level: 3,
@@ -105,9 +117,9 @@ const SALARY_DATA = {
       icon: '🏗️',
       description: 'Technische architectuur, enterprise integraties en strategisch klantadvies.',
       band: {
-        min:  85_000,
-        mid:  98_000,
-        max: 118_000,
+        min:  89_000,
+        mid: 103_000,
+        max: 123_000,
       },
       yearsExp: '8+ jaar',
       level: 4,
