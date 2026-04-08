@@ -70,14 +70,12 @@ function computeActiveBand(baseBand) {
   const active = sources.filter(s => state.activeSources.has(s.id));
   if (active.length === 0) return baseBand;
 
-  const avgMin = active.reduce((sum, s) => sum + s.factors.min, 0) / active.length;
-  const avgMid = active.reduce((sum, s) => sum + s.factors.mid, 0) / active.length;
-  const avgMax = active.reduce((sum, s) => sum + s.factors.max, 0) / active.length;
+  const avgFactor = key => active.reduce((sum, s) => sum + s.factors[key], 0) / active.length;
 
   return {
-    min: Math.round(baseBand.min * avgMin),
-    mid: Math.round(baseBand.mid * avgMid),
-    max: Math.round(baseBand.max * avgMax),
+    min: Math.round(baseBand.min * avgFactor('min')),
+    mid: Math.round(baseBand.mid * avgFactor('mid')),
+    max: Math.round(baseBand.max * avgFactor('max')),
   };
 }
 
