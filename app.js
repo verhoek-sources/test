@@ -198,10 +198,7 @@ function renderWelcome() {
           </div>
         </div>
       </div>
-      <div class="app-footer">
-        Indicative · Based on public sources and market data 2023–2026 ·
-        Amounts are gross annual salary excl. 8% holiday allowance
-      </div>
+      ${renderFooter()}
     </div>
   `;
 }
@@ -250,6 +247,7 @@ function renderRoleSelect() {
         </div>
       </div>
     </div>
+    ${renderFooter()}
   `;
 }
 
@@ -288,6 +286,7 @@ function renderQuestion(key, title, subtitle, options, context) {
         </div>
       </div>
     </div>
+    ${renderFooter()}
   `;
 }
 
@@ -465,10 +464,7 @@ function renderResult() {
         </div>
 
       </div>
-      <div class="app-footer">
-        Indicative · Market data 2023–2026 · Gross annual salary excl. holiday allowance ·
-        No rights can be derived from this indication
-      </div>
+      ${renderFooter()}
     </div>
   `;
 
@@ -573,9 +569,18 @@ function renderOverview() {
           <button class="btn btn-accent" onclick="window.print()">🖨️ Print</button>
         </div>
       </div>
-      <div class="app-footer">
-        Indicative · Market data 2023–2026 · Gross annual salary excl. holiday allowance
-      </div>
+      ${renderFooter()}
+    </div>
+  `;
+}
+
+// ── Footer ────────────────────────────────────────────────────────────────────
+function renderFooter() {
+  return `
+    <div class="app-footer">
+      Indicative · Market data 2023–2026 · Gross annual salary excl. holiday allowance
+      <br/>
+      <button class="btn-refresh" onclick="location.reload(true)">🔄 v${APP_VERSION}</button>
     </div>
   `;
 }
