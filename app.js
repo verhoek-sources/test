@@ -25,6 +25,10 @@ function fmtK(n) {
   return '€\u202F' + Math.round(n / 1000) + 'K';
 }
 
+function fmtMonthly(n) {
+  return fmt(Math.round(n / 12));
+}
+
 function clamp(v, lo, hi) {
   return Math.min(Math.max(v, lo), hi);
 }
@@ -295,6 +299,7 @@ function renderResult() {
         <div class="salary-main">
           <div class="sm-label">Uw indicatieve marktsalaris</div>
           <div class="sm-range">${fmt(mySalary)} / jaar</div>
+          <div class="sm-range sm-monthly">${fmtMonthly(mySalary)} / maand</div>
           <div class="sm-sub">Bruto jaarsalaris excl. 8% vakantiegeld · ${role.track === 'support' ? 'Support' : role.track === 'architect' ? 'Architectuur' : 'Consulting'} track</div>
         </div>
 
@@ -303,14 +308,17 @@ function renderResult() {
           <div class="band-value-card">
             <div class="bvc-label">Minimum (P25)</div>
             <div class="bvc-amount">${fmt(min)}</div>
+            <div class="bvc-monthly">${fmtMonthly(min)} / maand</div>
           </div>
           <div class="band-value-card">
             <div class="bvc-label">Mediaan (P50)</div>
             <div class="bvc-amount mid">${fmt(mid)}</div>
+            <div class="bvc-monthly">${fmtMonthly(mid)} / maand</div>
           </div>
           <div class="band-value-card">
             <div class="bvc-label">Maximum (P75)</div>
             <div class="bvc-amount">${fmt(max)}</div>
+            <div class="bvc-monthly">${fmtMonthly(max)} / maand</div>
           </div>
         </div>
 
@@ -420,6 +428,9 @@ function renderOverview() {
           <th>Min (P25)</th>
           <th>Mid (P50)</th>
           <th>Max (P75)</th>
+          <th>Maand min</th>
+          <th>Maand mid</th>
+          <th>Maand max</th>
         </tr>
       </thead>
       <tbody>
@@ -436,6 +447,9 @@ function renderOverview() {
         <td>${fmt(role.band.min)}</td>
         <td style="color:var(--accent);font-weight:600;">${fmt(role.band.mid)}</td>
         <td>${fmt(role.band.max)}</td>
+        <td>${fmtMonthly(role.band.min)}</td>
+        <td style="color:var(--accent);font-weight:600;">${fmtMonthly(role.band.mid)}</td>
+        <td>${fmtMonthly(role.band.max)}</td>
       </tr>
     `;
   }
