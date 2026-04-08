@@ -12,6 +12,7 @@ const state = {
   platform_depth: null,
   performance: null,
   showOverview: false,
+  showBenchmarkSources: false,
   activeSources: new Set(SALARY_DATA.benchmarkSources.map(s => s.id)),
 };
 
@@ -90,7 +91,9 @@ function computeActiveBand(baseBand) {
 const app = document.getElementById('app');
 
 function render() {
-  if (state.showOverview) {
+  if (state.showBenchmarkSources) {
+    renderBenchmarkSources();
+  } else if (state.showOverview) {
     renderOverview();
   } else if (state.step === 0) {
     renderWelcome();
@@ -145,7 +148,7 @@ function renderWelcome() {
         </div>
 
         <div class="welcome-hero">
-          <div class="welcome-badge">🇳🇱 Marktsalaris 2023 – 2026</div>
+          <button class="btn-benchmark-badge" onclick="showBenchmarkSourcesPage()">🇳🇱 Marktsalaris 2023 – 2026 ↗</button>
           <h1>Wat verdient u in de<br/>low-code markt?</h1>
           <p>
             Deze tool begeleidt u door een aantal vragen en berekent op basis van
@@ -193,6 +196,63 @@ function renderWelcome() {
               📋 Alle rollen bekijken
             </button>
           </div>
+        </div>
+      </div>
+      <div class="app-footer">
+        Indicatief · Gebaseerd op openbare bronnen en marktdata 2023–2026 ·
+        Bedragen zijn bruto jaarsalaris excl. 8% vakantiegeld
+      </div>
+    </div>
+  `;
+}
+
+// ── Benchmark sources overview ────────────────────────────────────────────────
+function renderBenchmarkSources() {
+  const sourcesHTML = SALARY_DATA.benchmarkSources.map(src => `
+    <div class="context-item" style="display:flex;align-items:flex-start;gap:14px;padding:18px;">
+      <div style="font-size:2rem;flex-shrink:0;line-height:1;">${src.icon}</div>
+      <div>
+        <div style="font-weight:700;font-size:.95rem;color:var(--primary);margin-bottom:4px;">${src.label}</div>
+        <div style="font-size:.85rem;color:var(--muted);line-height:1.5;">${src.desc}</div>
+      </div>
+    </div>
+  `).join('');
+
+  app.innerHTML = `
+    <div class="screen">
+      <div class="card">
+        <div class="logo-wrap" style="margin-bottom:24px;">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="logo-name">Salarishuis</div>
+            <div class="logo-sub">Low Code Enterprise Solutions · Nederland</div>
+          </div>
+        </div>
+
+        <div class="welcome-badge" style="margin-bottom:20px;">🇳🇱 Marktsalaris 2023 – 2026</div>
+
+        <div class="question-title">📊 Benchmarkbronnen</div>
+        <div class="question-subtitle">
+          De salarisbanden zijn samengesteld op basis van de volgende ${SALARY_DATA.benchmarkSources.length} openbare bronnen en marktonderzoeken (periode 2023–2026).
+          Alle bedragen zijn bruto jaarsalaris excl. 8% vakantiegeld.
+        </div>
+
+        <div class="context-grid" style="margin-bottom:28px;">
+          ${sourcesHTML}
+        </div>
+
+        <div class="info-box">
+          De bandbreedtes (P25 – P75) zijn berekend als gewogen gemiddelde van alle bronnen.
+          Op het resultaatscherm kunt u per bron aan- of uitvinken om te zien wat het effect is op uw salarisindicatie.
+        </div>
+
+        <div class="btn-row" style="justify-content:center;flex-wrap:wrap;gap:12px;">
+          <button class="btn btn-outline" onclick="goHomeBenchmark()">← Terug naar home</button>
+          <button class="btn btn-primary" onclick="goStartBenchmark()">Start de berekening →</button>
         </div>
       </div>
       <div class="app-footer">
@@ -602,6 +662,7 @@ function goStart() {
 
 function goHome() {
   state.showOverview = false;
+  state.showBenchmarkSources = false;
   state.step = 0;
   render();
 }
@@ -623,12 +684,29 @@ function restart() {
   state.platform_depth = null;
   state.performance = null;
   state.showOverview = false;
+  state.showBenchmarkSources = false;
   state.activeSources = new Set(SALARY_DATA.benchmarkSources.map(s => s.id));
   render();
 }
 
 function showAllRoles() {
   state.showOverview = true;
+  render();
+}
+
+function showBenchmarkSourcesPage() {
+  state.showBenchmarkSources = true;
+  render();
+}
+
+function goHomeBenchmark() {
+  state.showBenchmarkSources = false;
+  render();
+}
+
+function goStartBenchmark() {
+  state.showBenchmarkSources = false;
+  state.step = 1;
   render();
 }
 
