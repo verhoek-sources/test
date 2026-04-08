@@ -476,6 +476,71 @@ function renderResult() {
   }, 80);
 }
 
+// ── Benchmark Sources page ─────────────────────────────────────────────────────
+function renderBenchmarkSources() {
+  const sourcesHTML = SALARY_DATA.benchmarkSources.map(src => {
+    const pct = key => Math.round((src.factors[key] - 1) * 100);
+    const diff = pct('mid');
+    const sign = diff > 0 ? '+' : '';
+    const diffClass = diff > 0 ? 'positive' : diff < 0 ? 'neutral' : '';
+    return `
+      <div class="source-card active" style="cursor:default;">
+        <div class="source-card-icon">${src.icon}</div>
+        <div class="source-card-body">
+          <div class="source-card-label">${src.label}</div>
+          <div class="source-card-range">${src.desc}</div>
+          <div style="margin-top:6px;">
+            <span class="factor-pill ${diffClass}" style="font-size:.72rem;">
+              ${sign}${diff}% vs. consensus
+            </span>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  app.innerHTML = `
+    <div class="screen">
+      <div class="card">
+        <div class="logo-wrap" style="margin-bottom:24px;">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="logo-name">Salary House – Benchmark Sources</div>
+            <div class="logo-sub">Low Code Enterprise Solutions · Netherlands · 2023–2026</div>
+          </div>
+        </div>
+
+        <div class="question-title">📊 Market Salary 2023 – 2026</div>
+        <div class="question-subtitle">
+          The salary bands are based on the following ${SALARY_DATA.benchmarkSources.length} benchmark sources.
+          Each source contributes equally to the consensus band used in the salary calculator.
+          The deviation shown is relative to the overall average (P50).
+        </div>
+
+        <div class="info-box">
+          All amounts are annual gross salary in EUR, excl. 8% holiday allowance.
+          Bands run from P25 (min) → P75 (max) with P50 (mid) as market reference.
+          The consensus band is the weighted average of all active sources.
+        </div>
+
+        <div class="source-toggle-grid">
+          ${sourcesHTML}
+        </div>
+
+        <div class="result-actions" style="margin-top:24px;">
+          <button class="btn btn-outline" onclick="goHomeBenchmark()">← Back to start</button>
+          <button class="btn btn-primary" onclick="goStartBenchmark()">Calculate my salary →</button>
+        </div>
+      </div>
+      ${renderFooter()}
+    </div>
+  `;
+}
+
 // ── All Roles Overview ─────────────────────────────────────────────────────────
 function renderOverview() {
   const tracks = {
