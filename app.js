@@ -131,8 +131,8 @@ function renderWelcome() {
             <div class="feature-item">
               <div class="fi-icon">🎯</div>
               <div>
-                <strong>7 rollen</strong><br/>
-                Van Support Consultant t/m Solution Architect met bijbehorende banden.
+                <strong>8 rollen</strong><br/>
+                Van Support Consultant t/m Solution Architect en Team Lead met bijbehorende banden.
               </div>
             </div>
             <div class="feature-item">
@@ -173,8 +173,8 @@ function renderWelcome() {
 function renderRoleSelect() {
   const roles = SALARY_DATA.roles;
 
-  const trackOrder = ['support', 'consulting', 'architect'];
-  const trackLabel = { support: 'Support track', consulting: 'Consulting track', architect: 'Architectuur track' };
+  const trackOrder = ['support', 'consulting', 'architect', 'management'];
+  const trackLabel = { support: 'Support track', consulting: 'Consulting track', architect: 'Architectuur track', management: 'Management track' };
 
   let cardHTML = '';
   for (const track of trackOrder) {
@@ -280,7 +280,7 @@ function renderResult() {
     }
   }
 
-  const trackLabel = { support: 'Support track', consulting: 'Consulting track', architect: 'Architectuur track' };
+  const trackLabel = { support: 'Support track', consulting: 'Consulting track', architect: 'Architectuur track', management: 'Management track' };
 
   app.innerHTML = `
     <div class="screen">
@@ -299,8 +299,7 @@ function renderResult() {
         <div class="salary-main">
           <div class="sm-label">Uw indicatieve marktsalaris</div>
           <div class="sm-range">${fmt(mySalary)} / jaar</div>
-          <div class="sm-range sm-monthly">${fmtMonthly(mySalary)} / maand</div>
-          <div class="sm-sub">Bruto jaarsalaris excl. 8% vakantiegeld · ${role.track === 'support' ? 'Support' : role.track === 'architect' ? 'Architectuur' : 'Consulting'} track</div>
+          <div class="sm-sub">Bruto jaarsalaris excl. 8% vakantiegeld · ${role.track === 'support' ? 'Support' : role.track === 'architect' ? 'Architectuur' : role.track === 'management' ? 'Management' : 'Consulting'} track</div>
         </div>
 
         <!-- Band values -->
@@ -412,6 +411,7 @@ function renderOverview() {
     support:    { label: '🎧 Support track',      roles: [] },
     consulting: { label: '💼 Consulting track',   roles: [] },
     architect:  { label: '🏗️ Architectuur track', roles: [] },
+    management: { label: '👥 Management track',   roles: [] },
   };
 
   for (const role of SALARY_DATA.roles) {
@@ -437,8 +437,8 @@ function renderOverview() {
   `;
 
   for (const role of SALARY_DATA.roles) {
-    const trackClass = { support: 'support', consulting: 'consulting', architect: 'architect' }[role.track];
-    const trackNames = { support: 'Support', consulting: 'Consulting', architect: 'Architectuur' };
+    const trackClass = { support: 'support', consulting: 'consulting', architect: 'architect', management: 'management' }[role.track];
+    const trackNames = { support: 'Support', consulting: 'Consulting', architect: 'Architectuur', management: 'Management' };
     tableHTML += `
       <tr>
         <td><span style="margin-right:8px;">${role.icon}</span><strong>${role.label}</strong></td>
