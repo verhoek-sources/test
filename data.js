@@ -140,7 +140,7 @@ const SALARY_DATA = {
     certifications: {
       none:      { label: 'Geen',             weight: -0.05 },
       one:       { label: '1 certificaat',    weight:  0.04 },
-      multiple:  { label: '2 certificaten',   weight:  0.10 },
+      two:       { label: '2 certificaten',   weight:  0.10 },
       three:     { label: '3 certificaten',   weight:  0.13 },
       four_plus: { label: '4+ certificaten',  weight:  0.16 },
     },
