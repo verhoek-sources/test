@@ -577,7 +577,7 @@ function renderFooter() {
     <div class="app-footer">
       Indicative · Market data 2023–2026 · Gross annual salary excl. holiday allowance
       <br/>
-      <button class="btn-refresh" onclick="location.reload(true)">🔄 v${APP_VERSION}</button>
+      <button class="btn-refresh" onclick="location.reload(true)">🔄 #${PR_NUMBER}</button>
     </div>
   `;
 }
