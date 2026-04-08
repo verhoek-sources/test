@@ -743,6 +743,7 @@ input[type="range"]::-moz-range-thumb {
 .track-badge.consulting { background: #EFF4FC; color: var(--primary); }
 .track-badge.support    { background: #FFF4EB; color: var(--accent); }
 .track-badge.architect  { background: #E8F7EF; color: var(--success); }
+.track-badge.management { background: #F3ECFC; color: #7B3FA8; }
 
 /* Responsive tweaks */
 @media (max-width: 640px) {

@@ -15,6 +15,7 @@ De applicatie bevat salarisbanden voor de volgende rollen:
 | Experienced Consultant | Consulting | € 56.000 – € 76.000 |
 | Senior Consultant | Consulting | € 68.000 – € 92.000 |
 | Solution Architect | Architectuur | € 85.000 – € 118.000 |
+| Team Lead | Management | € 70.000 – € 95.000 |
 
 Bedragen zijn bruto jaarsalaris in euro's, exclusief 8% vakantiegeld.
 

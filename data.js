@@ -112,6 +112,20 @@ const SALARY_DATA = {
       yearsExp: '8+ jaar',
       level: 4,
     },
+    {
+      id: 'team_lead',
+      label: 'Team Lead',
+      track: 'management',
+      icon: '👥',
+      description: 'Leiding aan een team van consultants, coördinatie van projecten en coaching van teamleden.',
+      band: {
+        min:  70_000,
+        mid:  82_000,
+        max:  95_000,
+      },
+      yearsExp: '5+ jaar',
+      level: 4,
+    },
   ],
 
   /**
