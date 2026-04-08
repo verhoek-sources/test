@@ -148,7 +148,7 @@ function renderWelcome() {
         </div>
 
         <div class="welcome-hero">
-          <div class="welcome-badge">🇳🇱 Market Salary 2023 – 2026</div>
+          <button class="welcome-badge" onclick="showBenchmarkSourcesPage()">🇳🇱 Market Salary 2023 – 2026</button>
           <h1>What do you earn in the<br/>low-code market?</h1>
           <p>
             This tool guides you through a number of questions and calculates, based on

@@ -168,6 +168,11 @@ body {
   padding: 5px 14px;
   border-radius: 99px;
   margin-bottom: 20px;
+  border: none;
+  cursor: pointer;
+}
+.welcome-badge:hover {
+  opacity: .85;
 }
 
 .welcome-hero h1 {
