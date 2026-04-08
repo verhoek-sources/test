@@ -100,7 +100,7 @@ function render() {
       Object.entries(SALARY_DATA.adjustments.certifications).map(([k, v]) => ({
         id: k, label: v.label, desc: null, icon: { none: '⬜', one: '🟦', two: '🟩', three: '🟨', four_plus: '🟧' }[k],
       })),
-      'Een certificaat is een officieel bewijs van vakbekwaamheid, uitgegeven door een platform­leverancier of erkende trainingsinstantie (bijv. Mendix Rapid Developer, Advanced of Expert; OutSystems Associate of Professional; ServiceNow CSA). Het toont aan dat u een gestandaardiseerde toets of praktijkbeoordeling met goed gevolg heeft afgerond.'
+      'Een certificaat is een officieel bewijs van vakbekwaamheid, uitgegeven door een platformleverancier of erkende trainingsinstantie (bijv. Mendix Rapid Developer, Advanced of Expert; OutSystems Associate of Professional; ServiceNow CSA). Het toont aan dat u een gestandaardiseerde toets of praktijkbeoordeling met goed gevolg heeft afgerond.'
     );
   } else if (state.step === 4) {
     renderQuestion('platform_depth', '🔧 Platform expertise', 'Hoe omschrijft u uw diepgang op het gebruikte low-code platform?',
