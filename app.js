@@ -12,6 +12,7 @@ const state = {
   platform_depth: null,
   performance: null,
   showOverview: false,
+  activeSources: new Set(SALARY_DATA.benchmarkSources.map(s => s.id)),
 };
 
 const TOTAL_STEPS = 6; // welcome + 4 questions + result
@@ -58,6 +59,26 @@ function computePosition() {
     }
   }
   return clamp(pos, 0, 1);
+}
+
+/**
+ * Compute the salary band for a role by averaging the factors of all
+ * active benchmark sources over the base band.
+ */
+function computeActiveBand(baseBand) {
+  const sources = SALARY_DATA.benchmarkSources;
+  const active = sources.filter(s => state.activeSources.has(s.id));
+  if (active.length === 0) return baseBand;
+
+  const avgMin = active.reduce((sum, s) => sum + s.factors.min, 0) / active.length;
+  const avgMid = active.reduce((sum, s) => sum + s.factors.mid, 0) / active.length;
+  const avgMax = active.reduce((sum, s) => sum + s.factors.max, 0) / active.length;
+
+  return {
+    min: Math.round(baseBand.min * avgMin),
+    mid: Math.round(baseBand.mid * avgMid),
+    max: Math.round(baseBand.max * avgMax),
+  };
 }
 
 // ── Rendering ─────────────────────────────────────────────────────────────────
@@ -266,8 +287,9 @@ function renderResult() {
   if (!role) { state.step = 1; render(); return; }
 
   const pos = computePosition();
-  const mySalary = salaryAtPosition(role.band, pos);
-  const { min, mid, max } = role.band;
+  const band = computeActiveBand(role.band);
+  const mySalary = salaryAtPosition(band, pos);
+  const { min, mid, max } = band;
 
   // position in band as % for the visual bar (relative to min)
   const bandRange = max - min;
@@ -291,6 +313,25 @@ function renderResult() {
   }
 
   const trackLabel = { support: 'Support track', consulting: 'Consulting track', architect: 'Architectuur track', management: 'Management track' };
+
+  // benchmark source toggle cards
+  const activeCount = state.activeSources.size;
+  const totalCount  = SALARY_DATA.benchmarkSources.length;
+  const sourceCardsHTML = SALARY_DATA.benchmarkSources.map(src => {
+    const active = state.activeSources.has(src.id);
+    const srcMin = Math.round(role.band.min * src.factors.min);
+    const srcMax = Math.round(role.band.max * src.factors.max);
+    return `
+      <div class="source-card${active ? ' active' : ''}" onclick="toggleSource('${src.id}')">
+        <div class="source-card-check">${active ? '✓' : ''}</div>
+        <div class="source-card-icon">${src.icon}</div>
+        <div class="source-card-body">
+          <div class="source-card-label">${src.label}</div>
+          <div class="source-card-range">${fmtK(srcMin)} – ${fmtK(srcMax)}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
 
   app.innerHTML = `
     <div class="screen">
@@ -345,6 +386,23 @@ function renderResult() {
           <div class="band-visual-label" style="margin-top:4px;">
             <span style="font-size:.7rem;color:var(--muted);">Laagste bandbreedte</span>
             <span style="font-size:.7rem;color:var(--muted);">Hoogste bandbreedte</span>
+          </div>
+        </div>
+
+        <!-- Benchmark sources -->
+        <div class="context-section">
+          <h3>📊 Benchmarkbronnen
+            <span style="margin-left:auto;font-size:.75rem;font-weight:400;color:var(--muted);">
+              ${activeCount} van ${totalCount} actief
+            </span>
+          </h3>
+          <p style="font-size:.82rem;color:var(--muted);margin-bottom:14px;line-height:1.5;">
+            Klik op een bron om deze aan of uit te zetten. Het salaris wordt direct herberekend
+            op basis van de geselecteerde bronnen. Per bron zie je het bandbreedte-bereik (min – max)
+            dat die bron voor deze rol suggereert.
+          </p>
+          <div class="source-toggle-grid">
+            ${sourceCardsHTML}
           </div>
         </div>
 
@@ -558,6 +616,7 @@ function restart() {
   state.platform_depth = null;
   state.performance = null;
   state.showOverview = false;
+  state.activeSources = new Set(SALARY_DATA.benchmarkSources.map(s => s.id));
   render();
 }
 
@@ -573,6 +632,18 @@ function selectRole(id) {
 
 function selectOption(key, value) {
   state[key] = value;
+  render();
+}
+
+function toggleSource(id) {
+  if (state.activeSources.has(id)) {
+    // Keep at least one source active
+    if (state.activeSources.size > 1) {
+      state.activeSources.delete(id);
+    }
+  } else {
+    state.activeSources.add(id);
+  }
   render();
 }
 

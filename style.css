@@ -624,6 +624,7 @@ input[type="range"]::-moz-range-thumb {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .context-grid {
@@ -688,6 +689,100 @@ input[type="range"]::-moz-range-thumb {
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 8px;
+}
+
+/* ── Benchmark source toggle grid ────────────────────────── */
+.source-toggle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 520px) {
+  .source-toggle-grid { grid-template-columns: 1fr; }
+}
+
+.source-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+  opacity: .55;
+  text-decoration: line-through;
+  text-decoration-color: transparent;
+}
+
+.source-card.active {
+  opacity: 1;
+  border-color: var(--primary);
+  background: #EFF4FC;
+  text-decoration: none;
+}
+
+.source-card:hover {
+  border-color: var(--primary-light);
+  opacity: 1;
+}
+
+.source-card-check {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .65rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+
+.source-card.active .source-card-check {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.source-card-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.source-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.source-card-label {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  padding-right: 20px;
+}
+
+.source-card-range {
+  font-size: .75rem;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.source-card.active .source-card-range {
+  color: var(--primary-light);
+  font-weight: 600;
 }
 
 /* ── Footer ──────────────────────────────────────────────── */

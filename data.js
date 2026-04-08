@@ -170,6 +170,57 @@ const SALARY_DATA = {
     },
   },
 
+  /**
+   * Benchmark sources used to compile the salary bands.
+   * Each source has adjustment factors (multipliers relative to the consensus band)
+   * for min (P25), mid (P50) and max (P75).
+   * The average of all six sources equals 1.00 per percentile, matching the base bands.
+   */
+  benchmarkSources: [
+    {
+      id: 'cbs',
+      label: 'CBS – Centraal Bureau voor de Statistiek',
+      icon: '🏛️',
+      desc: 'Officiële loonstatistieken NL 2023–2026',
+      factors: { min: 0.93, mid: 0.93, max: 0.93 },
+    },
+    {
+      id: 'glassdoor_indeed',
+      label: 'Glassdoor / Indeed NL surveys',
+      icon: '🌐',
+      desc: 'Salary surveys voor IT-consultancyrollen 2024–2026',
+      factors: { min: 1.04, mid: 1.07, max: 1.10 },
+    },
+    {
+      id: 'indeed_postings',
+      label: 'Indeed NL vacaturepostings',
+      icon: '📋',
+      desc: 'Mendix / Low Code vacatures met salarisvermelding 2025–2026',
+      factors: { min: 1.00, mid: 0.98, max: 0.95 },
+    },
+    {
+      id: 'company_pages',
+      label: "Bedrijfspagina's (Blue Green, PostNL, Eneco, Capgemini, Sogeti)",
+      icon: '🏢',
+      desc: 'Gepubliceerde vacatures van bedrijven met Mendix-praktijk 2025–2026',
+      factors: { min: 1.01, mid: 1.02, max: 1.04 },
+    },
+    {
+      id: 'intermediair',
+      label: 'Intermediair / Technisch Weekblad salariskompas',
+      icon: '📰',
+      desc: 'Branche-salarisguide 2025',
+      factors: { min: 1.01, mid: 1.00, max: 0.99 },
+    },
+    {
+      id: 'computable_giarte',
+      label: 'Computable / Giarte ICT-salarisbenchmark',
+      icon: '💻',
+      desc: 'ICT-sector salarisbenchmark 2025',
+      factors: { min: 1.01, mid: 1.00, max: 0.99 },
+    },
+  ],
+
   /** Secondary benefits context (informational) */
   benefits: {
     holiday_allowance: '8% vakantiegeld (wettelijk)',
