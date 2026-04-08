@@ -192,9 +192,6 @@ function renderWelcome() {
             <button class="btn btn-primary" onclick="goStart()">
               Start the calculation →
             </button>
-            <button class="btn btn-outline" onclick="showAllRoles()">
-              📋 View all roles
-            </button>
           </div>
         </div>
       </div>
