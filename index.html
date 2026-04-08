@@ -3,15 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Salarishuis – Low Code Enterprise Solutions</title>
-  <script src="version.js"></script>
   <script>
-    /* Inject the versioned stylesheet – cache is busted on every new release. */
+    /*
+     * Bootstrap loader – resolves the version first (cache-busted with a
+     * timestamp so iOS never serves the stale version.js and therefore never
+     * loads outdated assets), then injects the stylesheet and application
+     * scripts with the correct version query string.
+     */
     (function () {
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'style.css?v=' + APP_VERSION;
-      document.head.appendChild(link);
+      var vScript = document.createElement('script');
+      vScript.src = 'version.js?t=' + Date.now();
+      vScript.onload = function () {
+        var v = '?v=' + APP_VERSION;
+
+        /* Versioned stylesheet */
+        var link = document.createElement('link');
+        link.rel  = 'stylesheet';
+        link.href = 'style.css' + v;
+        document.head.appendChild(link);
+
+        /* data.js must run before app.js; use onload chaining to guarantee order. */
+        var dataScript = document.createElement('script');
+        dataScript.src = 'data.js' + v;
+        dataScript.onload = function () {
+          var appScript = document.createElement('script');
+          appScript.src = 'app.js' + v;
+          document.body.appendChild(appScript);
+        };
+        document.body.appendChild(dataScript);
+      };
+      document.head.appendChild(vScript);
     }());
   </script>
 </head>
@@ -19,18 +44,5 @@
   <div id="app">
     <!-- screens are injected by app.js -->
   </div>
-  <script>
-    /* Load data and app scripts with cache-busting version query strings.
-       async=false preserves the required execution order (data.js before app.js). */
-    (function () {
-      var v = '?v=' + APP_VERSION;
-      ['data.js', 'app.js'].forEach(function (src) {
-        var s = document.createElement('script');
-        s.src = src + v;
-        s.async = false;
-        document.body.appendChild(s);
-      });
-    }());
-  </script>
 </body>
 </html>

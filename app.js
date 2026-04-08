@@ -188,10 +188,7 @@ function renderWelcome() {
           </div>
         </div>
       </div>
-      <div class="app-footer">
-        Indicatief · Gebaseerd op openbare bronnen en marktdata 2024–2025 ·
-        Bedragen zijn bruto jaarsalaris excl. 8% vakantiegeld
-      </div>
+      ${renderFooter('Indicatief · Gebaseerd op openbare bronnen en marktdata 2024–2025 · Bedragen zijn bruto jaarsalaris excl. 8% vakantiegeld')}
     </div>
   `;
 }
@@ -239,6 +236,7 @@ function renderRoleSelect() {
           </button>
         </div>
       </div>
+      ${renderFooter()}
     </div>
   `;
 }
@@ -277,6 +275,7 @@ function renderQuestion(key, title, subtitle, options, context) {
           </button>
         </div>
       </div>
+      ${renderFooter()}
     </div>
   `;
 }
@@ -455,10 +454,7 @@ function renderResult() {
         </div>
 
       </div>
-      <div class="app-footer">
-        Indicatief · Marktdata 2024–2025 · Bruto jaarsalaris excl. vakantiegeld ·
-        Geen rechten te ontlenen aan deze indicatie
-      </div>
+      ${renderFooter()}
     </div>
   `;
 
@@ -563,12 +559,32 @@ function renderOverview() {
           <button class="btn btn-accent" onclick="window.print()">🖨️ Afdrukken</button>
         </div>
       </div>
-      <div class="app-footer">
-        Indicatief · Marktdata 2024–2025 · Bruto jaarsalaris excl. vakantiegeld
-      </div>
+      ${renderFooter('Indicatief · Marktdata 2024–2025 · Bruto jaarsalaris excl. vakantiegeld')}
     </div>
   `;
 }
+
+// ── Footer ─────────────────────────────────────────────────────────────────────
+/**
+ * Returns the shared app-footer HTML.
+ * The version badge doubles as a refresh button: clicking it forces a full
+ * page reload so the browser fetches the latest version.js (and therefore
+ * the latest assets), fixing the stale-cache problem on iOS.
+ */
+function renderFooter(extraNote) {
+  const note = extraNote ||
+    'Indicatief · Marktdata 2024–2025 · Bruto jaarsalaris excl. vakantiegeld · Geen rechten te ontlenen aan deze indicatie';
+  return `
+    <div class="app-footer">
+      ${note}
+      <br/>
+      <button class="btn-refresh" onclick="location.reload(true)" title="Pagina vernieuwen">
+        🔄 v${APP_VERSION}
+      </button>
+    </div>
+  `;
+}
+
 
 // ── Progress bar ───────────────────────────────────────────────────────────────
 function progressBar(stepNum) {

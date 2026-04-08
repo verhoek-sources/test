@@ -794,6 +794,27 @@ input[type="range"]::-moz-range-thumb {
   line-height: 1.6;
 }
 
+.btn-refresh {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 3px 12px;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--muted);
+  font-size: .72rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-refresh:hover {
+  border-color: var(--primary-light);
+  color: var(--primary);
+  background: #EFF4FC;
+}
+
 /* ── Tooltip / info box ──────────────────────────────────── */
 .info-box {
   background: #EFF4FC;
