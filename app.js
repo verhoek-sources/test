@@ -72,7 +72,7 @@ function render() {
   } else if (state.step === 3) {
     renderQuestion('certifications', '🏅 Certificeringen', 'Hoeveel relevante low-code / platform-certificeringen heeft u?',
       Object.entries(SALARY_DATA.adjustments.certifications).map(([k, v]) => ({
-        id: k, label: v.label, desc: null, icon: { none: '⬜', one: '🟦', multiple: '🟩' }[k],
+        id: k, label: v.label, desc: null, icon: { none: '⬜', one: '🟦', multiple: '🟩', three: '🟨', four_plus: '🟧' }[k],
       }))
     );
   } else if (state.step === 4) {
