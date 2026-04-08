@@ -1,6 +1,6 @@
 /**
  * app.js – Salary House application logic
- * Dutch Low Code Enterprise Solutions | ~120 medewerkers
+ * Dutch Low Code Enterprise Solutions | ~120 employees
  */
 
 // ── State ────────────────────────────────────────────────────────────────────
@@ -19,16 +19,16 @@ const TOTAL_STEPS = 6; // welcome + 4 questions + result
 
 // ── Performance profile descriptions ─────────────────────────────────────────
 const PERFORMANCE_DESCS = {
-  developing: 'U bent nog in ontwikkeling richting de volledige functieverwachtingen. Dit is gebruikelijk bij starters of medewerkers die recent van rol zijn gewisseld. Uw salaris ligt doorgaans in het lagere deel van de band.',
-  meets:      'U voldoet consistent aan alle gestelde functieverwachtingen. Dit is het standaard referentiepunt voor een goed functionerende medewerker in deze rol en correspondeert met het midden van de salarisband.',
-  exceeds:    'U overtreft structureel de functieverwachtingen: u neemt initiatief, levert extra impact en wordt herkend als een sterke bijdrager. Dit rechtvaardigt een positie in het hogere deel van de salarisband.',
+  developing: 'You are still developing towards the full role expectations. This is common for starters or employees who have recently changed roles. Your salary will typically be in the lower part of the band.',
+  meets:      'You consistently meet all stated role expectations. This is the standard reference point for a well-functioning employee in this role and corresponds to the middle of the salary band.',
+  exceeds:    'You structurally exceed the role expectations: you take initiative, deliver extra impact and are recognised as a strong contributor. This justifies a position in the higher part of the salary band.',
 };
 
 // ── Platform expertise descriptions ──────────────────────────────────────────
 const PLATFORM_DEPTH_DESCS = {
-  general:    'Werkervaring met low-code platforms op functioneel niveau. U kunt basistaken uitvoeren maar bent geen specialist in één specifiek platform.',
-  specialist: 'Diepgaande kennis van één of meerdere low-code platforms (bijv. Mendix, OutSystems of ServiceNow). U bouwt zelfstandig complexe applicaties en configuraties.',
-  expert:     'Officieel gecertificeerd door de platformleverancier (bijv. Mendix Advanced of Expert Certification). U geldt als interne kennisdrager en wordt ingezet bij pre-sales en kennisoverdracht.',
+  general:    'Work experience with low-code platforms at a functional level. You can perform basic tasks but are not a specialist in one specific platform.',
+  specialist: 'In-depth knowledge of one or more low-code platforms (e.g. Mendix, OutSystems or ServiceNow). You independently build complex applications and configurations.',
+  expert:     'Officially certified by the platform vendor (e.g. Mendix Advanced or Expert Certification). You are regarded as an internal knowledge owner and are deployed in pre-sales and knowledge transfer.',
 };
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -97,26 +97,26 @@ function render() {
   } else if (state.step === 1) {
     renderRoleSelect();
   } else if (state.step === 2) {
-    renderQuestion('education', '🎓 Opleidingsniveau', 'Wat is uw hoogst afgeronde opleiding?',
+    renderQuestion('education', '🎓 Education Level', 'What is your highest completed level of education?',
       Object.entries(SALARY_DATA.adjustments.education).map(([k, v]) => ({
         id: k, label: v.label, desc: null, icon: { mbo: '📘', hbo: '📗', university: '🎓' }[k],
       }))
     );
   } else if (state.step === 3) {
-    renderQuestion('certifications', '🏅 Certificeringen', 'Hoeveel relevante low-code / platform-certificeringen heeft u?',
+    renderQuestion('certifications', '🏅 Certifications', 'How many relevant low-code / platform certifications do you hold?',
       Object.entries(SALARY_DATA.adjustments.certifications).map(([k, v]) => ({
         id: k, label: v.label, desc: null, icon: { none: '⬜', one: '🟦', two: '🟩', three: '🟨', four_plus: '🟧' }[k],
       })),
-      'Een certificaat is een officieel bewijs van vakbekwaamheid, uitgegeven door een platformleverancier of erkende trainingsinstantie (bijv. Mendix Rapid Developer, Advanced of Expert; OutSystems Associate of Professional; ServiceNow CSA). Het toont aan dat u een gestandaardiseerde toets of praktijkbeoordeling met goed gevolg heeft afgerond.'
+      'A certification is an official proof of professional competence, issued by a platform vendor or recognised training provider (e.g. Mendix Rapid Developer, Advanced or Expert; OutSystems Associate or Professional; ServiceNow CSA). It demonstrates that you have successfully completed a standardised test or practical assessment.'
     );
   } else if (state.step === 4) {
-    renderQuestion('platform_depth', '🔧 Platform expertise', 'Hoe omschrijft u uw diepgang op het gebruikte low-code platform?',
+    renderQuestion('platform_depth', '🔧 Platform Expertise', 'How would you describe your depth of knowledge on the low-code platform you use?',
       Object.entries(SALARY_DATA.adjustments.platform_depth).map(([k, v]) => ({
         id: k, label: v.label, desc: PLATFORM_DEPTH_DESCS[k], icon: { general: '🌐', specialist: '⚙️', expert: '🏆' }[k],
       }))
     );
   } else if (state.step === 5) {
-    renderQuestion('performance', '📊 Prestatieprofiel', 'Hoe presteert u ten opzichte van de functieverwachtingen?',
+    renderQuestion('performance', '📊 Performance Profile', 'How do you perform relative to the role expectations?',
       Object.entries(SALARY_DATA.adjustments.performance).map(([k, v]) => ({
         id: k, label: v.label, desc: PERFORMANCE_DESCS[k],
         icon: { developing: '📈', meets: '✅', exceeds: '🌟' }[k],
@@ -139,65 +139,65 @@ function renderWelcome() {
             </svg>
           </div>
           <div>
-            <div class="logo-name">Salarishuis</div>
-            <div class="logo-sub">Low Code Enterprise Solutions · Nederland</div>
+            <div class="logo-name">Salary House</div>
+            <div class="logo-sub">Low Code Enterprise Solutions · Netherlands</div>
           </div>
         </div>
 
         <div class="welcome-hero">
-          <div class="welcome-badge">🇳🇱 Marktsalaris 2023 – 2026</div>
-          <h1>Wat verdient u in de<br/>low-code markt?</h1>
+          <div class="welcome-badge">🇳🇱 Market Salary 2023 – 2026</div>
+          <h1>What do you earn in the<br/>low-code market?</h1>
           <p>
-            Deze tool begeleidt u door een aantal vragen en berekent op basis van
-            uw profiel een marktconform salarisindicatie voor uw rol binnen een
-            Nederlandse dienstverleningsorganisatie (~120 fte) gericht op
-            low-code enterprise oplossingen.
+            This tool guides you through a number of questions and calculates, based on
+            your profile, a market-conform salary indication for your role within a
+            Dutch service organisation (~120 FTE) focused on
+            low-code enterprise solutions.
           </p>
 
           <div class="feature-list">
             <div class="feature-item">
               <div class="fi-icon">💰</div>
               <div>
-                <strong>Marktsalaris 2024–2025</strong><br/>
-                Gebaseerd op CBS-data, salary surveys en branchebenchmarks.
+                <strong>Market Salary 2024–2025</strong><br/>
+                Based on CBS data, salary surveys and industry benchmarks.
               </div>
             </div>
             <div class="feature-item">
               <div class="fi-icon">🎯</div>
               <div>
-                <strong>8 rollen</strong><br/>
-                Van Support Consultant t/m Solution Architect en Team Lead met bijbehorende banden.
+                <strong>8 roles</strong><br/>
+                From Support Consultant to Solution Architect and Team Lead with corresponding bands.
               </div>
             </div>
             <div class="feature-item">
               <div class="fi-icon">🔧</div>
               <div>
-                <strong>Persoonlijk profiel</strong><br/>
-                Opleiding, certificeringen en prestaties bepalen uw positie in de band.
+                <strong>Personal profile</strong><br/>
+                Education, certifications and performance determine your position in the band.
               </div>
             </div>
             <div class="feature-item">
               <div class="fi-icon">📋</div>
               <div>
-                <strong>Volledig overzicht</strong><br/>
-                Bekijk ook de salarisbanden van alle andere rollen in één oogopslag.
+                <strong>Full overview</strong><br/>
+                Also view the salary bands of all other roles at a glance.
               </div>
             </div>
           </div>
 
           <div class="btn-row" style="justify-content:center; gap:12px; flex-wrap:wrap;">
             <button class="btn btn-primary" onclick="goStart()">
-              Start de berekening →
+              Start the calculation →
             </button>
             <button class="btn btn-outline" onclick="showAllRoles()">
-              📋 Alle rollen bekijken
+              📋 View all roles
             </button>
           </div>
         </div>
       </div>
       <div class="app-footer">
-        Indicatief · Gebaseerd op openbare bronnen en marktdata 2024–2025 ·
-        Bedragen zijn bruto jaarsalaris excl. 8% vakantiegeld
+        Indicative · Based on public sources and market data 2024–2025 ·
+        Amounts are gross annual salary excl. 8% holiday allowance
       </div>
     </div>
   `;
@@ -208,7 +208,7 @@ function renderRoleSelect() {
   const roles = SALARY_DATA.roles;
 
   const trackOrder = ['support', 'consulting', 'architect', 'management'];
-  const trackLabel = { support: 'Support track', consulting: 'Consulting track', architect: 'Architectuur track', management: 'Management track' };
+  const trackLabel = { support: 'Support track', consulting: 'Consulting track', architect: 'Architecture track', management: 'Management track' };
 
   let cardHTML = '';
   for (const track of trackOrder) {
@@ -234,15 +234,15 @@ function renderRoleSelect() {
     ${progressBar(1)}
     <div class="screen">
       <div class="card">
-        <div class="question-title">👤 Uw rol</div>
+        <div class="question-title">👤 Your Role</div>
         <div class="question-subtitle">
-          Selecteer de functie die het beste aansluit bij uw huidige of gewenste positie.
+          Select the position that best matches your current or desired role.
         </div>
         ${cardHTML}
         <div class="btn-row">
-          <button class="btn btn-outline" onclick="goBack()">← Terug</button>
+          <button class="btn btn-outline" onclick="goBack()">← Back</button>
           <button class="btn btn-primary" onclick="nextStep()" ${!state.selectedRole ? 'disabled' : ''}>
-            Volgende →
+            Next →
           </button>
         </div>
       </div>
@@ -278,9 +278,9 @@ function renderQuestion(key, title, subtitle, options, context) {
         ${context ? `<div class="info-box">${context}</div>` : ''}
         <div class="radio-group">${optHTML}</div>
         <div class="btn-row">
-          <button class="btn btn-outline" onclick="goBack()">← Terug</button>
+          <button class="btn btn-outline" onclick="goBack()">← Back</button>
           <button class="btn btn-primary" onclick="nextStep()" ${!state[key] ? 'disabled' : ''}>
-            ${stepNum === 5 ? 'Bereken salaris 💰' : 'Volgende →'}
+            ${stepNum === 5 ? 'Calculate Salary 💰' : 'Next →'}
           </button>
         </div>
       </div>
@@ -319,7 +319,7 @@ function renderResult() {
     }
   }
 
-  const trackLabel = { support: 'Support track', consulting: 'Consulting track', architect: 'Architectuur track', management: 'Management track' };
+  const trackLabel = { support: 'Support track', consulting: 'Consulting track', architect: 'Architecture track', management: 'Management track' };
 
   // benchmark source toggle cards
   const activeCount = state.activeSources.size;
@@ -346,18 +346,18 @@ function renderResult() {
 
         <div class="result-header">
           <div class="role-badge">${role.icon} ${role.label}</div>
-          <h2>Uw salarisbandbreedte</h2>
+          <h2>Your Salary Band</h2>
           <p>
-            Op basis van uw profiel valt uw marktconform salaris binnen de onderstaande
-            bandbreedte voor een Nederlandse low-code dienstverleningsorganisatie.
+            Based on your profile, your market-conform salary falls within the following
+            band for a Dutch low-code service organisation.
           </p>
         </div>
 
         <!-- Main salary block -->
         <div class="salary-main">
-          <div class="sm-label">Uw indicatieve marktsalaris</div>
-          <div class="sm-range">${fmt(mySalary)} / jaar</div>
-          <div class="sm-sub">Bruto jaarsalaris excl. 8% vakantiegeld · ${role.track === 'support' ? 'Support' : role.track === 'architect' ? 'Architectuur' : role.track === 'management' ? 'Management' : 'Consulting'} track</div>
+          <div class="sm-label">Your indicative market salary</div>
+          <div class="sm-range">${fmt(mySalary)} / year</div>
+          <div class="sm-sub">Gross annual salary excl. 8% holiday allowance · ${role.track === 'support' ? 'Support' : role.track === 'architect' ? 'Architecture' : role.track === 'management' ? 'Management' : 'Consulting'} track</div>
         </div>
 
         <!-- Band values -->
@@ -365,17 +365,17 @@ function renderResult() {
           <div class="band-value-card">
             <div class="bvc-label">Minimum (P25)</div>
             <div class="bvc-amount">${fmt(min)}</div>
-            <div class="bvc-monthly">${fmtMonthly(min)} / maand</div>
+            <div class="bvc-monthly">${fmtMonthly(min)} / month</div>
           </div>
           <div class="band-value-card">
-            <div class="bvc-label">Mediaan (P50)</div>
+            <div class="bvc-label">Median (P50)</div>
             <div class="bvc-amount mid">${fmt(mid)}</div>
-            <div class="bvc-monthly">${fmtMonthly(mid)} / maand</div>
+            <div class="bvc-monthly">${fmtMonthly(mid)} / month</div>
           </div>
           <div class="band-value-card">
             <div class="bvc-label">Maximum (P75)</div>
             <div class="bvc-amount">${fmt(max)}</div>
-            <div class="bvc-monthly">${fmtMonthly(max)} / maand</div>
+            <div class="bvc-monthly">${fmtMonthly(max)} / month</div>
           </div>
         </div>
 
@@ -383,7 +383,7 @@ function renderResult() {
         <div class="band-visual">
           <div class="band-visual-label">
             <span>${fmtK(min)}</span>
-            <span style="color:var(--accent);font-weight:600;">Uw positie: ${fmtK(mySalary)}</span>
+            <span style="color:var(--accent);font-weight:600;">Your position: ${fmtK(mySalary)}</span>
             <span>${fmtK(max)}</span>
           </div>
           <div class="band-track">
@@ -391,22 +391,22 @@ function renderResult() {
             <div class="band-marker" id="bandMarker" style="left:0;"></div>
           </div>
           <div class="band-visual-label" style="margin-top:4px;">
-            <span style="font-size:.7rem;color:var(--muted);">Laagste bandbreedte</span>
-            <span style="font-size:.7rem;color:var(--muted);">Hoogste bandbreedte</span>
+            <span style="font-size:.7rem;color:var(--muted);">Bottom of band</span>
+            <span style="font-size:.7rem;color:var(--muted);">Top of band</span>
           </div>
         </div>
 
         <!-- Benchmark sources -->
         <div class="context-section">
-          <h3>📊 Benchmarkbronnen
+          <h3>📊 Benchmark Sources
             <span style="margin-left:auto;font-size:.75rem;font-weight:400;color:var(--muted);">
-              ${activeCount} van ${totalCount} actief
+              ${activeCount} of ${totalCount} active
             </span>
           </h3>
           <p style="font-size:.82rem;color:var(--muted);margin-bottom:14px;line-height:1.5;">
-            Klik op een bron om deze aan of uit te zetten. Het salaris wordt direct herberekend
-            op basis van de geselecteerde bronnen. Per bron zie je het bandbreedte-bereik (min – max)
-            dat die bron voor deze rol suggereert.
+            Click a source to toggle it on or off. The salary is immediately recalculated
+            based on the selected sources. Per source you can see the band range (min – max)
+            that source suggests for this role.
           </p>
           <div class="source-toggle-grid">
             ${sourceCardsHTML}
@@ -415,16 +415,16 @@ function renderResult() {
 
         <!-- Adjustment factors -->
         <div class="info-box">
-          <strong>Profielfactoren</strong> die uw positie in de band bepalen:<br/>
-          <div class="factor-pills" style="margin-top:8px;">${pills.join('') || '<span class="factor-pill">Geen factoren geselecteerd</span>'}</div>
+          <strong>Profile factors</strong> that determine your position in the band:<br/>
+          <div class="factor-pills" style="margin-top:8px;">${pills.join('') || '<span class="factor-pill">No factors selected</span>'}</div>
         </div>
 
         <!-- Context -->
         <div class="context-section">
-          <h3>📋 Functiecontext</h3>
+          <h3>📋 Role Context</h3>
           <div class="context-grid">
             <div class="context-item">
-              <div class="ci-label">Functie</div>
+              <div class="ci-label">Role</div>
               <div class="ci-value">${role.label}</div>
             </div>
             <div class="context-item">
@@ -432,19 +432,19 @@ function renderResult() {
               <div class="ci-value">${trackLabel[role.track]}</div>
             </div>
             <div class="context-item">
-              <div class="ci-label">Ervaringsindicatie</div>
+              <div class="ci-label">Experience indication</div>
               <div class="ci-value">${role.yearsExp}</div>
             </div>
             <div class="context-item">
-              <div class="ci-label">Positie in band</div>
-              <div class="ci-value">${myPct < 33 ? 'Onderkant' : myPct < 66 ? 'Midden' : 'Bovenkant'} (${myPct}%)</div>
+              <div class="ci-label">Position in band</div>
+              <div class="ci-value">${myPct < 33 ? 'Lower end' : myPct < 66 ? 'Middle' : 'Upper end'} (${myPct}%)</div>
             </div>
           </div>
         </div>
 
         <!-- Secondary benefits -->
         <div class="context-section">
-          <h3>🎁 Secundaire arbeidsvoorwaarden (indicatief)</h3>
+          <h3>🎁 Secondary Benefits (indicative)</h3>
           <div class="context-grid">
             ${Object.values(SALARY_DATA.benefits).map(b => `
               <div class="context-item">
@@ -456,15 +456,15 @@ function renderResult() {
 
         <!-- Actions -->
         <div class="result-actions">
-          <button class="btn btn-outline" onclick="restart()">↩ Opnieuw beginnen</button>
-          <button class="btn btn-outline" onclick="showAllRoles()">📋 Alle rollen</button>
-          <button class="btn btn-accent" onclick="window.print()">🖨️ Afdrukken</button>
+          <button class="btn btn-outline" onclick="restart()">↩ Start over</button>
+          <button class="btn btn-outline" onclick="showAllRoles()">📋 All roles</button>
+          <button class="btn btn-accent" onclick="window.print()">🖨️ Print</button>
         </div>
 
       </div>
       <div class="app-footer">
-        Indicatief · Marktdata 2024–2025 · Bruto jaarsalaris excl. vakantiegeld ·
-        Geen rechten te ontlenen aan deze indicatie
+        Indicative · Market data 2024–2025 · Gross annual salary excl. holiday allowance ·
+        No rights can be derived from this indication
       </div>
     </div>
   `;
@@ -485,7 +485,7 @@ function renderOverview() {
   const tracks = {
     support:    { label: '🎧 Support track',      roles: [] },
     consulting: { label: '💼 Consulting track',   roles: [] },
-    architect:  { label: '🏗️ Architectuur track', roles: [] },
+    architect:  { label: '🏗️ Architecture track', roles: [] },
     management: { label: '👥 Management track',   roles: [] },
   };
 
@@ -497,15 +497,15 @@ function renderOverview() {
     <table class="overview-table">
       <thead>
         <tr>
-          <th>Functie</th>
+          <th>Role</th>
           <th>Track</th>
-          <th>Ervaring</th>
+          <th>Experience</th>
           <th>Min (P25)</th>
           <th>Mid (P50)</th>
           <th>Max (P75)</th>
-          <th>Maand min</th>
-          <th>Maand mid</th>
-          <th>Maand max</th>
+          <th>Month min</th>
+          <th>Month mid</th>
+          <th>Month max</th>
         </tr>
       </thead>
       <tbody>
@@ -513,7 +513,7 @@ function renderOverview() {
 
   for (const role of SALARY_DATA.roles) {
     const trackClass = { support: 'support', consulting: 'consulting', architect: 'architect', management: 'management' }[role.track];
-    const trackNames = { support: 'Support', consulting: 'Consulting', architect: 'Architectuur', management: 'Management' };
+    const trackNames = { support: 'Support', consulting: 'Consulting', architect: 'Architecture', management: 'Management' };
     tableHTML += `
       <tr>
         <td><span style="margin-right:8px;">${role.icon}</span><strong>${role.label}</strong></td>
@@ -541,20 +541,20 @@ function renderOverview() {
             </svg>
           </div>
           <div>
-            <div class="logo-name">Salarishuis – Overzicht alle rollen</div>
-            <div class="logo-sub">Low Code Enterprise Solutions · Nederland · 2024–2025</div>
+            <div class="logo-name">Salary House – All Roles Overview</div>
+            <div class="logo-sub">Low Code Enterprise Solutions · Netherlands · 2024–2025</div>
           </div>
         </div>
 
         <div class="info-box">
-          Bruto jaarsalaris in euro's (excl. 8% vakantiegeld) · P25 = instap, P50 = marktreferentie, P75 = bovenkant band ·
-          Gebaseerd op marktdata voor een Nederlandse dienstverleningsorganisatie (~120 medewerkers).
+          Gross annual salary in euros (excl. 8% holiday allowance) · P25 = entry, P50 = market reference, P75 = top of band ·
+          Based on market data for a Dutch service organisation (~120 employees).
         </div>
 
         ${tableHTML}
 
         <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border);">
-          <div class="question-title" style="font-size:1rem;margin-bottom:10px;">🎁 Secundaire arbeidsvoorwaarden</div>
+          <div class="question-title" style="font-size:1rem;margin-bottom:10px;">🎁 Secondary Benefits</div>
           <div class="context-grid">
             ${Object.values(SALARY_DATA.benefits).map(b => `
               <div class="context-item">
@@ -565,13 +565,13 @@ function renderOverview() {
         </div>
 
         <div class="result-actions" style="margin-top:24px;">
-          <button class="btn btn-outline" onclick="goHome()">← Terug naar start</button>
-          <button class="btn btn-primary" onclick="goStart()">Bereken mijn salaris →</button>
-          <button class="btn btn-accent" onclick="window.print()">🖨️ Afdrukken</button>
+          <button class="btn btn-outline" onclick="goHome()">← Back to start</button>
+          <button class="btn btn-primary" onclick="goStart()">Calculate my salary →</button>
+          <button class="btn btn-accent" onclick="window.print()">🖨️ Print</button>
         </div>
       </div>
       <div class="app-footer">
-        Indicatief · Marktdata 2024–2025 · Bruto jaarsalaris excl. vakantiegeld
+        Indicative · Market data 2024–2025 · Gross annual salary excl. holiday allowance
       </div>
     </div>
   `;
@@ -583,7 +583,7 @@ function progressBar(stepNum) {
   return `
     <div class="progress-wrap">
       <div class="progress-label">
-        <span>Stap ${stepNum} van ${TOTAL_STEPS}</span>
+        <span>Step ${stepNum} of ${TOTAL_STEPS}</span>
         <span>${pct}%</span>
       </div>
       <div class="progress-bar">
