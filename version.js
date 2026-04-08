@@ -6,4 +6,5 @@
  * data.js, app.js), busting the browser cache for every new version.
  */
 
-const APP_VERSION = '1.1.1';
+const APP_VERSION = '1.1.0';
+const PR_NUMBER = 24;
