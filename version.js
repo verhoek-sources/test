@@ -7,3 +7,4 @@
  */
 
 const APP_VERSION = '1.1.0';
+const PR_NUMBER = 24;
