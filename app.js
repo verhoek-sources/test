@@ -400,8 +400,6 @@ function renderResult() {
 
 // ── All Roles Overview ─────────────────────────────────────────────────────────
 function renderOverview() {
-  const trackLabel = { support: 'Support track', consulting: 'Consulting track', architect: 'Architectuur track', management: 'Management track' };
-
   const tracks = {
     support:    { label: '🎧 Support track',      roles: [] },
     consulting: { label: '💼 Consulting track',   roles: [] },
