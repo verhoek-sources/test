@@ -176,7 +176,7 @@ function renderWelcome() {
                 Opleiding, certificeringen en prestaties bepalen uw positie in de band.
               </div>
             </div>
-            <div class="feature-item">
+            <div class="feature-item" onclick="showAllRoles()" style="cursor:pointer;">
               <div class="fi-icon">📋</div>
               <div>
                 <strong>Volledig overzicht</strong><br/>
@@ -188,9 +188,6 @@ function renderWelcome() {
           <div class="btn-row" style="justify-content:center; gap:12px; flex-wrap:wrap;">
             <button class="btn btn-primary" onclick="goStart()">
               Start de berekening →
-            </button>
-            <button class="btn btn-outline" onclick="showAllRoles()">
-              📋 Alle rollen bekijken
             </button>
           </div>
         </div>
