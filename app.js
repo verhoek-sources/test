@@ -158,7 +158,7 @@ function renderWelcome() {
           </p>
 
           <div class="feature-list">
-            <div class="feature-item">
+            <div class="feature-item" onclick="showBenchmarkSourcesPage()" style="cursor:pointer;">
               <div class="fi-icon">💰</div>
               <div>
                 <strong>Market Salary 2023–2026</strong><br/>
