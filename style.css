@@ -127,7 +127,31 @@ body {
   margin-top: 1px;
 }
 
-/* ── Screen: Welcome ────────────────────────────────────── */
+/* ── Clickable benchmark badge ───────────────────────────── */
+.btn-benchmark-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 99px;
+  margin-bottom: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 0 2px 8px rgba(26,60,110,.20);
+}
+
+.btn-benchmark-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(26,60,110,.30);
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+}
+
+
 .welcome-hero {
   text-align: center;
   padding: 20px 0 32px;

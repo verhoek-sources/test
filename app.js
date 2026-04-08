@@ -12,6 +12,7 @@ const state = {
   platform_depth: null,
   performance: null,
   showOverview: false,
+  showBenchmarkSources: false,
   activeSources: new Set(SALARY_DATA.benchmarkSources.map(s => s.id)),
 };
 
@@ -90,7 +91,9 @@ function computeActiveBand(baseBand) {
 const app = document.getElementById('app');
 
 function render() {
-  if (state.showOverview) {
+  if (state.showBenchmarkSources) {
+    renderBenchmarkSources();
+  } else if (state.showOverview) {
     renderOverview();
   } else if (state.step === 0) {
     renderWelcome();
@@ -176,7 +179,7 @@ function renderWelcome() {
                 Education, certifications and performance determine your position in the band.
               </div>
             </div>
-            <div class="feature-item">
+            <div class="feature-item" onclick="showAllRoles()" style="cursor:pointer;">
               <div class="fi-icon">📋</div>
               <div>
                 <strong>Full overview</strong><br/>
@@ -602,6 +605,7 @@ function goStart() {
 
 function goHome() {
   state.showOverview = false;
+  state.showBenchmarkSources = false;
   state.step = 0;
   render();
 }
@@ -623,12 +627,29 @@ function restart() {
   state.platform_depth = null;
   state.performance = null;
   state.showOverview = false;
+  state.showBenchmarkSources = false;
   state.activeSources = new Set(SALARY_DATA.benchmarkSources.map(s => s.id));
   render();
 }
 
 function showAllRoles() {
   state.showOverview = true;
+  render();
+}
+
+function showBenchmarkSourcesPage() {
+  state.showBenchmarkSources = true;
+  render();
+}
+
+function goHomeBenchmark() {
+  state.showBenchmarkSources = false;
+  render();
+}
+
+function goStartBenchmark() {
+  state.showBenchmarkSources = false;
+  state.step = 1;
   render();
 }
 
