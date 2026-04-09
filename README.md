@@ -46,6 +46,105 @@ De salarisbanden zijn gebaseerd op:
 
 De bandbreedte loopt van P25 (instap, 25e percentiel) via P50 (marktreferentie) naar P75 (bovenkant, 75e percentiel).
 
+## Berekeningsoverzicht
+
+### Stap 1 – Bandbreedte per rol
+
+Elke rol heeft een vaste salarisbandbreedte op basis van marktdata:
+
+| Percentiel | Betekenis |
+|------------|-----------|
+| **P25 (min)** | Instapniveau – 25e percentiel van de markt |
+| **P50 (mid)** | Marktreferentie – mediaan |
+| **P75 (max)** | Bovenkant – 75e percentiel van de markt |
+
+De bandbreedte kan worden verfijnd door één of meerdere benchmarkbronnen aan of uit te zetten. De gecorrigeerde bandbreedte wordt berekend als:
+
+```
+gecorrigeerde_waarde = basis_waarde × gemiddelde_factor(actieve_bronnen)
+```
+
+Elke benchmarkbron heeft afzonderlijke vermenigvuldigingsfactoren voor P25, P50 en P75.
+
+---
+
+### Stap 2 – Positie binnen de bandbreedte (0.0 – 1.0)
+
+De positie binnen de bandbreedte geeft aan waar iemand precies uitkomt: `0.0` = P25 (minimum), `0.5` = P50 (midden), `1.0` = P75 (maximum).
+
+De berekening start altijd op `0.5` (het marktmidden) en past dit aan op basis van vier factoren:
+
+```
+positie = 0.50 + gewicht_opleiding + gewicht_certificeringen + gewicht_platformdiepte + gewicht_prestatie
+positie = max(0.0, min(1.0, positie))   ← afgekapt op [0.0, 1.0]
+```
+
+#### Factor 1 – Opleiding
+
+| Opleidingsniveau | Gewicht |
+|-----------------|---------|
+| MBO | −0.10 |
+| HBO | 0.00 |
+| WO / Master | +0.08 |
+
+#### Factor 2 – Certificeringen
+
+| Aantal certificeringen | Gewicht |
+|-----------------------|---------|
+| Geen | −0.05 |
+| 1 certificering | +0.04 |
+| 2 certificeringen | +0.10 |
+| 3 certificeringen | +0.13 |
+| 4 of meer certificeringen | +0.16 |
+
+#### Factor 3 – Platformdiepte
+
+| Platformniveau | Gewicht |
+|---------------|---------|
+| Generalist | −0.05 |
+| Platform specialist | +0.08 |
+| Platform expert / vendor gecertificeerd | +0.14 |
+
+#### Factor 4 – Prestatieprofiel
+
+| Prestatieprofiel | Gewicht |
+|-----------------|---------|
+| Developing (in ontwikkeling) | −0.08 |
+| Meets expectations (voldoet aan verwachtingen) | 0.00 |
+| Exceeds expectations (overtreft verwachtingen) | +0.10 |
+
+#### Reikwijdte van de positie
+
+Door alle gewichten op te tellen zijn de uiterste posities:
+
+| Scenario | Berekening | Positie |
+|----------|-----------|---------|
+| Laagst mogelijk | 0.50 − 0.10 − 0.05 − 0.05 − 0.08 | **0.22** |
+| Standaard (alle neutraal) | 0.50 + 0.00 + 0.00 + 0.00 + 0.00 | **0.50** |
+| Hoogst mogelijk | 0.50 + 0.08 + 0.16 + 0.14 + 0.10 | **0.98** |
+
+---
+
+### Stap 3 – Salarisberekening
+
+Met de berekende positie en de (eventueel gecorrigeerde) bandbreedte wordt het bijbehorende bruto jaarsalaris als volgt bepaald:
+
+```
+salaris = band.min + (band.max − band.min) × positie
+```
+
+**Voorbeeld** (Consultant, alle standaard HBO / 2 certs / specialist / meets expectations):
+
+```
+positie    = 0.50 + 0.00 + 0.10 + 0.08 + 0.00 = 0.68
+salaris    = €46.000 + (€65.000 − €46.000) × 0.68
+           = €46.000 + €19.000 × 0.68
+           = €46.000 + €12.920
+           = €58.920 bruto per jaar
+```
+
+---
+
 ## Bestanden
 
 ```
