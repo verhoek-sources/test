@@ -148,7 +148,7 @@ function renderWelcome() {
         </div>
 
         <div class="welcome-hero">
-          <button class="welcome-badge" onclick="showBenchmarkSourcesPage()">🇳🇱 Market Salary 2023 – 2026</button>
+          <button class="welcome-badge" onclick="showBenchmarkSourcesPage()">🇳🇱 Market Salary 2025 – 2026</button>
           <h1>What do you earn in the<br/>low-code market?</h1>
           <p>
             This tool guides you through a number of questions and calculates, based on
@@ -161,7 +161,7 @@ function renderWelcome() {
             <div class="feature-item" onclick="showBenchmarkSourcesPage()" style="cursor:pointer;">
               <div class="fi-icon">💰</div>
               <div>
-                <strong>Market Salary 2023–2026</strong><br/>
+                <strong>Market Salary 2025–2026</strong><br/>
                 Based on CBS data, salary surveys and industry benchmarks.
               </div>
             </div>
@@ -510,11 +510,11 @@ function renderBenchmarkSources() {
           </div>
           <div>
             <div class="logo-name">Salary House – Benchmark Sources</div>
-            <div class="logo-sub">Low Code Enterprise Solutions · Netherlands · 2023–2026</div>
+            <div class="logo-sub">Low Code Enterprise Solutions · Netherlands · 2025–2026</div>
           </div>
         </div>
 
-        <div class="question-title">📊 Market Salary 2023 – 2026</div>
+        <div class="question-title">📊 Market Salary 2025 – 2026</div>
         <div class="question-subtitle">
           The salary bands are based on the following ${SALARY_DATA.benchmarkSources.length} benchmark sources.
           Each source contributes equally to the consensus band used in the salary calculator.
@@ -603,7 +603,7 @@ function renderOverview() {
           </div>
           <div>
             <div class="logo-name">Salary House – All Roles Overview</div>
-            <div class="logo-sub">Low Code Enterprise Solutions · Netherlands · 2023–2026</div>
+            <div class="logo-sub">Low Code Enterprise Solutions · Netherlands · 2025–2026</div>
           </div>
         </div>
 
@@ -640,7 +640,7 @@ function renderOverview() {
 function renderFooter() {
   return `
     <div class="app-footer">
-      Indicative · Market data 2023–2026 · Gross annual salary excl. holiday allowance
+      Indicative · Market data 2025–2026 · Gross annual salary excl. holiday allowance
       <br/>
       <button class="btn-refresh" onclick="location.reload(true)">🔄 #${PR_NUMBER}</button>
     </div>
