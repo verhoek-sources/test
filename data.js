@@ -2,8 +2,8 @@
  * data.js – Salary data for Dutch Low Code Enterprise Solutions company
  *
  * Sources / methodology:
- *  - CBS (Centraal Bureau voor de Statistiek) wage data NL 2023-2026
- *  - Glassdoor / Indeed NL salary surveys for IT consulting roles 2024-2026
+ *  - CBS (Centraal Bureau voor de Statistiek) wage data NL 2025-2026
+ *  - Glassdoor / Indeed NL salary surveys for IT consulting roles 2025-2026
  *  - Indeed NL job postings for Mendix / Low Code roles (2025-2026):
  *      scraped role titles, stated salary ranges and required experience
  *      for Mendix Developer, Low Code Consultant, Solution Architect postings
@@ -181,14 +181,14 @@ const SALARY_DATA = {
       id: 'cbs',
       label: 'CBS – Centraal Bureau voor de Statistiek',
       icon: '🏛️',
-      desc: 'Official wage statistics NL 2023–2026',
+      desc: 'Official wage statistics NL 2025–2026',
       factors: { min: 0.93, mid: 0.93, max: 0.93 },
     },
     {
       id: 'glassdoor_indeed',
       label: 'Glassdoor / Indeed NL surveys',
       icon: '🌐',
-      desc: 'Salary surveys for IT consultancy roles 2024–2026',
+      desc: 'Salary surveys for IT consultancy roles 2025–2026',
       factors: { min: 1.04, mid: 1.07, max: 1.10 },
     },
     {
