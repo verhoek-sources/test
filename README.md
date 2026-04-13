@@ -29,7 +29,7 @@ Bedragen zijn bruto jaarsalaris in euro's, exclusief 8% vakantiegeld.
 ## Methodologie
 
 De salarisbanden zijn gebaseerd op:
-- CBS (Centraal Bureau voor de Statistiek) loondata Nederland 2023–2026
+- CBS (Centraal Bureau voor de Statistiek) loondata Nederland 2025–2026
 - Glassdoor / Indeed NL salary surveys voor IT-consultingfuncties 2025–2026
 - Indeed NL vacaturedata voor Mendix / Low Code rollen (2025–2026): gestelde salarisranges en ervaringseisen in gepubliceerde vacatures
 - Bedrijfswebsites met actieve Mendix-praktijken (2025–2026):
