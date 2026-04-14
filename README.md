@@ -155,6 +155,91 @@ data.js      – Salarisdata, rollen en aanpassingsfactoren
 version.js   – Centrale versierconstante voor cache-busting
 ```
 
+## Databevindingen & Benchmarkverificatie (april 2025)
+
+### Verificatievragen
+
+| Vraag | Bevinding |
+|-------|-----------|
+| Zijn de bedragen exclusief 8% vakantiegeld? | ✅ Ja – expliciet vermeld in `data.js` en in de rollentabel boven |
+| Is de basis 40 uur per week? | ⚠️ Niet gedocumenteerd – nergens staat dit vermeld |
+| Zijn de bronnen up-to-date (2025–2026)? | ✅ Ja – bronnen gaan uit van 2025-2026 loondata |
+
+---
+
+### Bevindingen per track
+
+#### 1. Urengrondslag (ontbrekende documentatie)
+De 40-uursbasis wordt nergens expliciet benoemd. Dit is relevant omdat veel Nederlandse IT-benchmarks (o.a. Glassdoor, CBS) werken met 36- of 38-uurs weken als basis. Bij vergelijking met een 36-uurs benchmark zou een 40-uursconversie de jaarsalarissen met ~11% verhogen. Omgekeerd: als concurrerende bedrijven publiceren op 36u-basis en onze tool op 40u, lijken onze bedragen structureel hoger.
+
+#### 2. Consultingtrack – mediaan te hoog voor junior- en mediorprofielen
+
+Recente marktdata (Werkzoeken.nl, Glassdoor NL, Indeed NL, april 2025) voor **alle** Mendix-consultantniveaus gezamenlijk:
+
+| Bron | Gemiddeld bruto jaarsalaris (excl. vk.geld, ~40u) |
+|------|--------------------------------------------------|
+| Werkzoeken.nl | €46.620 min – €54.780 gem. – €63.000 max |
+| Glassdoor NL | ~€54.000 gemiddeld |
+| Indeed Amsterdam | ~€56.200 gemiddeld |
+| Jooble NL (incl. senior) | ~€62.400 gemiddeld |
+
+De P25 van de **Consultant (0–2 jaar)** in de huidige tool bedraagt €46.000. Dit is gelijk aan het markminimum voor *alle* Mendix-niveaus samen. Het P50 van €55.000 voor een juniorrol zit al op het marktgemiddelde voor alle niveaus. Dat is inconsistent: een instapniveau zou niet met zijn P50 op het marktgemiddelde voor alle ervaringsniveaus moeten zitten.
+
+Concrete afwijkingen t.o.v. verwachte marktpositie:
+
+| Rol | Huidig P50 | Verwacht P50 (markt) | Verschil |
+|-----|-----------|----------------------|---------|
+| Consultant (0–2 jr) | €55.000 | €44.000 – €50.000 | +~15% |
+| Experienced Consultant (2–5 jr) | €68.500 | €56.000 – €63.000 | +~15% |
+| Senior Consultant (5–10 jr) | €82.500 | €70.000 – €78.000 | +~11% |
+
+#### 3. Supporttrack – vergelijkbare opwaartse vertekening
+
+IT-applicatiebeheer/-support (servicedesk, 2e lijn) in Nederland kent lagere marktprijzen dan IT-consultancyrollen. Gangbare P25–P75 voor applicatiesupport (2025, excl. vk.geld, 40u):
+
+| Niveau | Verwachte marktrange | Huidig in tool | Verschil |
+|--------|---------------------|----------------|---------|
+| Junior (0–2 jr) | €28.000 – €40.000 | €33.000 – €47.000 | +~15% |
+| Medior (2–5 jr) | €36.000 – €50.000 | €42.000 – €59.000 | +~15% |
+| Senior (5+ jr) | €46.000 – €62.000 | €52.000 – €71.000 | +~14% |
+
+#### 4. Solution Architect – plafond aan de hoge kant
+
+Voor een mid-market dienstverleningsorganisatie (~120 fte) geldt doorgaans een lager salarisplafond dan voor grote multinationals of Big 4. Het huidige maximum van €123.000 ligt boven het typische P75 voor een solution architect bij vergelijkbare bedrijven (markt P75 ≈ €105.000–€110.000).
+
+#### 5. Mogelijke oorzaak: cumulatie van premies
+
+De methodologie past een sectorpremie van **+8–12%** toe bovenop bronnen (Glassdoor, Indeed) die al een Mendix-specialismepremie verdisconteren. Dit leidt tot dubbeltelling:
+- Glassdoor/Indeed salarissen zijn al hoger dan CBS omdat zij actieve vacatures tonen (bedrijven zoeken schaars talent → hogere lonen zichtbaar)
+- Daar bovenop nogmaals 8–12% sectortoeslag opleggen overschat de markt structureel
+
+---
+
+### Aanbevelingen voor verbetering
+
+1. **Documenteer de urengrondslag expliciet** – voeg "op basis van 40 uur per week" toe aan de rollentabel in dit README en aan `data.js` als commentaar.
+
+2. **Heroverweeg de sectorpremie-methodiek** – pas de sectorpremie alleen toe op CBS-data, niet op Glassdoor/Indeed-data die de Mendix-markttoeslag al impliceert. Alternatief: gebruik één gewogen gemiddelde van alle bronnen zonder additionele sectoropslag.
+
+3. **Bijgestelde P25–P75 salarisbanden (voorstel)**:
+
+   | Rol | Huidig P25 – P75 | Voorgesteld P25 – P75 | Δ |
+   |-----|-----------------|----------------------|---|
+   | Support Consultant | €33.000 – €47.000 | €29.000 – €42.000 | −~12% |
+   | Experienced Support Consultant | €42.000 – €59.000 | €37.000 – €52.000 | −~12% |
+   | Senior Support Consultant | €52.000 – €71.000 | €46.000 – €63.000 | −~11% |
+   | Consultant | €46.000 – €65.000 | €40.000 – €57.000 | −~13% |
+   | Experienced Consultant | €59.000 – €80.000 | €52.000 – €70.000 | −~12% |
+   | Senior Consultant | €72.000 – €96.000 | €64.000 – €85.000 | −~11% |
+   | Solution Architect | €89.000 – €123.000 | €80.000 – €108.000 | −~12% |
+   | Team Lead | €70.000 – €95.000 | €63.000 – €87.000 | −~8% |
+
+4. **Voeg aanvullende benchmarkbron toe** – Intermediair Salariswijzer en/of Salarisgids.nl bieden specifiek voor IT-consultancy in Nederland gedetailleerde P25/P50/P75 opsplitsingen per ervaringsniveau. Dit verhoogt de nauwkeurigheid per functietrap.
+
+5. **Jaarlijkse herziening** – documenteer wanneer de data voor het laatst is gevalideerd (bijv. `data.js` header: `Last validated: Q1 2025`). Plan een herbeoordeling bij elke nieuwe CAO-ronde of CBS-publicatie.
+
+---
+
 ## Versie-beheer / cache-busting
 
 Statische assets (stylesheet, databestand en applicatielogica) worden altijd met een versie-querystring ingeladen (`?v=<APP_VERSION>`). Hierdoor laden browsers bij een nieuwe release automatisch de nieuwste bestanden in plaats van een gecachede versie.
